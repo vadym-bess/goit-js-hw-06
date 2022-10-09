@@ -14,21 +14,9 @@ const images = [
 ];
 
 
-const galleryRef = document.querySelector(".gallery");
-
-const elements = images.map(({ url, alt }) => {
-
-const item = document.createElement("li");
-
-  item.classList.add("gallery__item");
-  const imageRef = document.createElement("img");
-
-  imageRef.classList.add("gallery__img");
-  imageRef.src = url;
-  imageRef.alt = alt;
-  imageRef.width = 200;
-
-  item.appendChild(imageRef);
-  return item;
+const list = document.querySelector('.gallery');
+let markup = '';
+images.forEach(img => {
+    markup = images.map(img =>`<li class="gallery__item"><img class="gallery__img" src="${img.url}" alt="${img.alt}"></li>`).join('');
 });
-galleryRef.append(...elements);
+list.insertAdjacentHTML('afterbegin', markup);
